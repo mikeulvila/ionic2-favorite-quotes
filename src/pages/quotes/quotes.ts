@@ -1,22 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/*
-  Generated class for the Quotes page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+import { Quote } from '../../data/quote.interface'
 @Component({
   selector: 'page-quotes',
   templateUrl: 'quotes.html'
 })
-export class QuotesPage {
+export class QuotesPage implements OnInit {
+  quoteGroup: {category: string, quotes: Quote[], icon: string};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, private navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad QuotesPage');
+  ngOnInit() {
+    this.quoteGroup = this.navParams.data;
   }
-
+  // ionViewDidLoad() {
+  //   this.quoteGroup = this.navParams.data;
+  //  Add Elvis operator (?) in template to use this approach: quoteGroup?.category
+  // }
 }
