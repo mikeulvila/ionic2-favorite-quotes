@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams, ModalController} from 'ionic-angular';
+import {ModalController} from 'ionic-angular';
 import {QuotesService} from "../../services/quotes.service";
 import {Quote} from "../../data/quote.interface";
 import {QuotePage} from "../quote/quote";
@@ -10,9 +10,7 @@ import {QuotePage} from "../quote/quote";
 })
 export class FavoritesPage {
   quotes: Quote[];
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private quotesService: QuotesService,
+  constructor(private quotesService: QuotesService,
               private modalCtrl: ModalController) {}
 
   ionViewWillEnter() {
@@ -36,6 +34,5 @@ export class FavoritesPage {
     });
     this.quotes.splice(position, 1);
   }
-
 
 }
